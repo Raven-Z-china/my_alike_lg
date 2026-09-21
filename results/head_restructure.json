@@ -1,0 +1,51 @@
+{
+  "status": "WIRED IN and verified end to end",
+  "what": "Descriptor computed only at the keypoints: the dense 129-channel convhead2 map is replaced by a dense score channel plus four corner matmuls over gathered features.",
+  "variant_that_ships": "C (four-corner: head + normalise per corner, then bilinear combine)",
+  "variants_rejected": {
+    "A_nearest": "cos min 0.905 vs the shipped bilinear path - it is exact only against a NEAREST dense path, which is not what deploys",
+    "B_bilinear_on_raw": "cos min 0.9997 - the per-pixel normalisation does not commute with bilinear interpolation, so this is an approximation"
+  },
+  "isolated_arithmetic": {
+    "sampler_max_abs": 1.192e-07,
+    "cos_min_final": 0.9999995
+  },
+  "wired_in_stage_vs_dense": {
+    "batches": 3,
+    "keypoints_max_abs": 0.0,
+    "scores_max_abs": 0.0,
+    "desc_cos_min": 0.9999998,
+    "note": "bit-identical on the score path proves the trunk is shared, not re-derived"
+  },
+  "macs": {
+    "dense": 4329000000.0,
+    "variant_c": 67100000.0,
+    "speedup_on_conv": 64.5,
+    "pipeline_dense": 18100000000.0,
+    "pipeline_new": 13840000000.0,
+    "pipeline_change_pct": -23.5
+  },
+  "converted_graph": {
+    "off_npu_nodes": 0,
+    "parser_consistent": true,
+    "rknn_MB_dense": 12.13,
+    "rknn_MB_gathered": 10.07,
+    "op_types_added": "none - Gather/MatMul/Div/Mul/Add were already in the graph"
+  },
+  "end_to_end": {
+    "onnx_vs_dense": "bit-identical (n_inl_gt 225.5593 both, n_inl 245.6780 both, mAA 0.7355 both)",
+    "rknn_hpatches_n_inl_gt": {
+      "dense_s1": 225.2203,
+      "gathered_s1": 225.2373
+    },
+    "rknn_crossmodal_n_inl_at_3": {
+      "dense_s1": 313.59,
+      "gathered_s1": 313.59
+    },
+    "rknn_crossmodal_matches_mean": {
+      "dense_s1": 346.395,
+      "gathered_s1": 346.42
+    },
+    "note": "differences are inside fp16 noise; the fp16 conversion itself costs cos 0.9997"
+  }
+}

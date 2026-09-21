@@ -1,0 +1,81 @@
+{
+  "target": "rk3588",
+  "sim_iters": 2,
+  "stage1": {
+    "log_bytes": 168993,
+    "build_s": 5.6,
+    "fallback_nodes": 0,
+    "fallback_ops": {},
+    "unassigned_target_lines": 39,
+    "n_will_fallback": 0,
+    "fallback_messages": [],
+    "graph": {
+      "nodes": 238,
+      "einsum": 0,
+      "matmul": 1,
+      "transpose": 1,
+      "scatter": 0,
+      "softmax": 0
+    },
+    "rknn": "models/alike_stage_bil_fp.rknn",
+    "rknn_MB": 12.13,
+    "sim_ms": 1256.3
+  },
+  "stage2": [
+    {
+      "log_bytes": 1217567,
+      "build_s": 32.5,
+      "fallback_nodes": 36,
+      "fallback_ops": {},
+      "unassigned_target_lines": 16,
+      "n_will_fallback": 36,
+      "fallback_messages": [
+        "Transpose will fallback to CPU, because input shape has exceeded the max limit, height(512) * width(512) = 262",
+        "Transpose will fallback to CPU, because input shape has exceeded the max limit, height(512) * width(64) = 3276"
+      ],
+      "graph": {
+        "nodes": 1720,
+        "einsum": 28,
+        "matmul": 206,
+        "transpose": 223,
+        "scatter": 6,
+        "softmax": 38
+      },
+      "onnx": "models/lightglue_stage_einsum.onnx",
+      "rknn": "models/lightglue_stage_einsum_fp.rknn",
+      "rknn_MB": 42.93,
+      "sim_ms": 989.6
+    },
+    {
+      "log_bytes": 1177587,
+      "build_s": 30.7,
+      "fallback_nodes": 44,
+      "fallback_ops": {
+        "Einsum": 38,
+        "ScatterElements": 5
+      },
+      "unassigned_target_lines": 16,
+      "n_will_fallback": 0,
+      "fallback_messages": [],
+      "graph": {
+        "nodes": 1720,
+        "einsum": 1,
+        "matmul": 233,
+        "transpose": 223,
+        "scatter": 6,
+        "softmax": 38
+      },
+      "onnx": "models/lightglue_stage_mm.onnx",
+      "rknn": "models/lightglue_stage_mm_fp.rknn",
+      "rknn_MB": 44.37,
+      "sim_ms": 1023.2
+    }
+  ],
+  "comparison": {
+    "from": "models/lightglue_stage_einsum.onnx",
+    "to": "models/lightglue_stage_mm.onnx",
+    "fallback_delta": -8,
+    "einsum_delta": -27,
+    "transpose_delta": 0
+  }
+}

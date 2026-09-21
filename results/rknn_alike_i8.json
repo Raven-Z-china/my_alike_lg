@@ -1,0 +1,50 @@
+{
+  "onnx": "models/alike_stage_bil.onnx",
+  "rknn": "models/alike_stage_bil_i8.rknn",
+  "stage": "alike",
+  "target": "rk3588",
+  "dtype": "i8",
+  "cpu_fallback_lines": [
+    "E RKNN: [18:09:24.134] Unkown op target: 0",
+    "E RKNN: [18:09:24.135] Unkown op target: 0",
+    "E RKNN: [18:09:24.136] Unkown op target: 0",
+    "E RKNN: [18:09:24.151] Unkown op target: 0",
+    "E RKNN: [18:09:24.183] Unkown op target: 0",
+    "E RKNN: [18:09:24.215] Unkown op target: 0",
+    "E RKNN: [18:09:24.218] Unkown op target: 0",
+    "E RKNN: [18:09:24.247] Unkown op target: 0",
+    "E RKNN: [18:09:24.248] Unkown op target: 0",
+    "E RKNN: [18:09:24.250] Unkown op target: 0",
+    "E RKNN: [18:09:24.251] Unkown op target: 0",
+    "W RKNN: [18:09:24.045] Transpose will fallback to CPU, because input shape has exceeded the max limit, height(512) * width(512) = 262144, required product no larger than 16384!",
+    "W RKNN: [18:09:24.047] Transpose will fallback to CPU, because input shape has exceeded the max limit, height(128) * width(512) = 65536, required product no larger than 16384!",
+    "W RKNN: [18:09:24.048] Transpose will fallback to CPU, because input shape has exceeded the max limit, height(128) * width(512) = 65536, required product no larger than 16384!"
+  ],
+  "cpu_fallback_ops": {},
+  "cpu_fallback_nodes": 4,
+  "cpu_fallback_ambiguous": 40,
+  "numeric": {
+    "keypoints": {
+      "view0": {
+        "max_nn_px": 29.00142277351181,
+        "mean_nn_px": 1.1298189403197885,
+        "n_over_1px": 157
+      },
+      "view1": {
+        "max_nn_px": 20.110346715891854,
+        "mean_nn_px": 1.1641518565655544,
+        "n_over_1px": 171
+      }
+    },
+    "descriptors": {
+      "median_cos": 0.896428213562497,
+      "p1_cos": 0.7089929234586477,
+      "min_cos": 0.6726093173310469,
+      "note": "order-matched by keypoint nearest neighbour"
+    },
+    "scores": {
+      "max_abs": 0.9652326926589012,
+      "mean_abs": 0.5512754399851474
+    }
+  }
+}

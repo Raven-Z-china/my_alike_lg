@@ -1,0 +1,44 @@
+{
+  "what": "9->6 layers, FINE-TUNED (13611 steps, lr 1e-4, 1 epoch, seed 0)",
+  "checkpoint": "<checkpoint:checkpoint_best.tar>",
+  "hpatches_pairs": 59,
+  "crossmodal_pairs": 150,
+  "size": 512,
+  "keypoints": 512,
+  "params_M": 7.934,
+  "params_ratio_vs_9layer": 0.6676,
+  "hpatches": {
+    "n_inl_gt": 223.6271,
+    "mAA": 0.7269,
+    "n_match": 323.85,
+    "mprec@3px": 0.6597
+  },
+  "crossmodal": {
+    "n_inl@3": 315.7133,
+    "rec@3": 0.9861,
+    "prec@3": 0.8086,
+    "matches_mean": 388.73
+  },
+  "three_way": {
+    "9_layers": {
+      "params_M": 11.884625,
+      "H_n_inl_gt": 225.5593,
+      "H_mAA": 0.7365,
+      "CM_n_inl@3": 313.995
+    },
+    "9_to_7_ft": {
+      "params_M": 9.250893,
+      "H_n_inl_gt": 225.5932,
+      "H_mAA": 0.7476,
+      "CM_n_inl@3": 315.833
+    },
+    "9_to_6_ft": {
+      "params_M": 7.934,
+      "H_n_inl_gt": 223.6271,
+      "H_mAA": 0.7269,
+      "CM_n_inl@3": 315.7133
+    }
+  },
+  "verdict": "9->7 is the optimum. 9->6 still helps cross-modal (+1.72 inliers) but HPatches starts to give way (-1.93 inliers, mAA -0.0096) - the first real accuracy loss of the three points. Recommend 9->7: 9->6 removes another 1.32 M parameters (14% of what remains) to buy -0.02 HPatches mAA and no cross-modal gain.",
+  "note_on_the_published_9_to_7": "The 9->7 run was checked for the token_confidence length bug and is clean (framework builds 7/7/6 and the checkpoint holds 7/7/6, 9.897516 M both, zero unexpected tensors). The bug was latent at depth 7 because the framework itself builds n-1 token_confidence heads, so the surplus tensor coincides."
+}

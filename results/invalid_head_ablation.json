@@ -1,0 +1,10 @@
+{
+  "status": "INVALID - do not use these numbers",
+  "what": "heads 4->2 weight truncation (slice_attention_heads)",
+  "why_invalid": "The two attention blocks have incompatible layouts and neither is sliceable by head. `SelfBlock.Wqkv` is nn.Linear(embed_dim, 3*embed_dim), so its width does NOT depend on num_heads; heads are recovered via qkv.unflatten(-1, (num_heads, -1, 3)), making each head's q/k/v the three INTERLEAVED values of a contiguous head_dim*3 run - a prefix of 3*heads*hd rows is not a set of whole heads. `CrossBlock.to_qk`/`to_v`/`to_out` are nn.Linear(embed_dim, dim_head*num_heads) with dim_head*num_heads == embed_dim for EVERY valid head count, so their shapes are identical at 4 and 2 heads and slicing them creates the mismatch rather than removing one.",
+  "how_it_was_detected": "A heads=2 checkpoint was written and then failed to load at fine-tune launch with 100+ size mismatches, e.g. `matcher.posenc.Wr.weight: copying a param with shape [32, 2] ... current model is [64, 2]` and `matcher.transformers.0.self_attn.Wqkv.weight: [384, 256] ... [768, 256]`.",
+  "why_the_param_count_did_not_reveal_it": "The two errors roughly cancel: slicing SelfBlock the wrong way and slicing CrossBlock when it should not be cut at all both remove parameters, summing to ~2.07 M over 45 'projections' and yielding a plausible 82.6 %. A count that agrees for the wrong reason.",
+  "correct_alternative": "Changing num_heads needs NO weight surgery: LightGlue.__init__ reads conf.num_heads and builds head_dim = descriptor_dim // num_heads itself. Retrain with matcher.num_heads: 2.",
+  "and_it_is_not_a_compression_lever": "num_heads changes head_dim, and the only parameter whose shape depends on it is posenc.Wr - 32 values out of 11.9 M. A 4->2 head change saves 32 parameters.",
+  "reproducible_numbers_from_that_row": null
+}

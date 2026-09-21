@@ -1,0 +1,37 @@
+{
+  "verdict": "REJECTED - channel pruning is not viable on this backbone",
+  "why": "Every fractional cut that removes real work moves at least one of the two outputs by more than the whole fp16 conversion costs. The blocks are only 16/32/64/128 wide, so there is no removable redundancy at this scale.",
+  "measured": {
+    "whole_block_zeroing": {
+      "note": "sensitivity of the score map to zeroing each block's output; best 0.177 vs a 0.02 tolerance",
+      "best_block": "net.block4.conv2 = 0.17668",
+      "worst": "net.convhead2 = 6.72366",
+      "n_within_tolerance": 0,
+      "n_tested": 16
+    },
+    "fractional_channels": {
+      "note": "keep ratio 0.90/0.75/0.50 on the 8 highest-MAC blocks; needs score L1 < 0.02 AND desc cos > 0.999",
+      "n_viable": 0,
+      "examples": {
+        "block4.conv2 keep 0.90": {
+          "score_relL1": 0.06644,
+          "desc_cos": 0.991276
+        },
+        "block2.conv2 keep 0.90": {
+          "score_relL1": 0.46545,
+          "desc_cos": 0.951026
+        },
+        "block1.conv2 keep 0.90": {
+          "score_relL1": 0.41786,
+          "desc_cos": 0.811926
+        },
+        "convhead2 keep 0.90": {
+          "score_relL1": 0.0,
+          "desc_cos": 0.92148,
+          "note": "score map BIT-IDENTICAL - it is the descriptor that breaks"
+        }
+      }
+    }
+  },
+  "the_layout_that_hid_it": "ALikeNet.forward splits the head as `descriptor_map = x[:, :-1]` and `scores_map = sigmoid(x[:, -1])`. The SCORE is the LAST channel. So pruning descriptor channels leaves the score map unchanged, and a score-map-only sensitivity scan reports ZERO damage at every keep ratio while the descriptor cosine falls to 0.921. Both outputs have to be watched."
+}

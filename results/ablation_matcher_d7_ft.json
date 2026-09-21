@@ -1,0 +1,42 @@
+{
+  "what": "9->7 layers, FINE-TUNED (13611 steps, lr 1e-4, 1 epoch, seed 0)",
+  "checkpoint": "<checkpoint:checkpoint_best.tar>",
+  "hpatches_pairs": 59,
+  "crossmodal_pairs": 150,
+  "size": 512,
+  "keypoints": 512,
+  "params_M": 9.250893,
+  "params_ratio": 0.778,
+  "hpatches": {
+    "n_inl_gt": 225.5932,
+    "mAA": 0.7476,
+    "n_match": 329.54,
+    "mprec@3px": 0.6535,
+    "@3px": 0.8136,
+    "@5px": 0.8475
+  },
+  "crossmodal": {
+    "n_inl@3": 315.8333,
+    "rec@3": 0.9866,
+    "prec@3": 0.792,
+    "matches_mean": 397.05,
+    "rep@3": 0.6253
+  },
+  "baseline_9layer": {
+    "params_M": 11.884625,
+    "hpatches": {
+      "n_inl_gt": 225.5593,
+      "mAA": 0.7365,
+      "n_match": 326.02,
+      "mprec@3px": 0.6594
+    },
+    "crossmodal": {
+      "n_inl@3": 313.995,
+      "rec@3": 0.9862,
+      "prec@3": 0.7998,
+      "matches_mean": 390.52,
+      "rep@3": 0.6218
+    }
+  },
+  "verdict": "adopt: -22.2% params with n_inl_gt +0.034 (HPatches) and +1.84 (cross-modal); mAA +0.011"
+}

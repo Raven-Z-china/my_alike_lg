@@ -1,0 +1,27 @@
+{
+  "onnx": "models_final/optimized/lightglue_stage_d7.onnx",
+  "rknn": "models_final/optimized/lightglue_stage_d7_fp.rknn",
+  "stage": "lightglue",
+  "target": "rk3588",
+  "dtype": "fp",
+  "cpu_fallback_lines": [
+    "E RKNN: [10:16:11.694] Unkown op target: 0",
+    "E RKNN: [10:16:11.703] Unkown op target: 0",
+    "E RKNN: [10:16:12.211] Unkown op target: 0",
+    "E RKNN: [10:16:12.212] Unkown op target: 0"
+  ],
+  "cpu_fallback_ops": {},
+  "cpu_fallback_nodes": 0,
+  "cpu_fallback_ambiguous": 7,
+  "numeric": {
+    "matches0": {
+      "valid_sim": 265,
+      "valid_ref": 267,
+      "identical": 500,
+      "total": 512
+    },
+    "mscores0": {
+      "max_abs": 0.020394235849380493
+    }
+  }
+}

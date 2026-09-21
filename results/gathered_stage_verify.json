@@ -1,0 +1,33 @@
+{
+  "batches": [
+    {
+      "batch": 0,
+      "kp_max_abs": 0.0,
+      "score_max_abs": 0.0,
+      "desc_cos_median": 1.0,
+      "desc_cos_min": 0.9999998807907104,
+      "desc_max_abs": 1.4901161193847656e-07
+    },
+    {
+      "batch": 1,
+      "kp_max_abs": 0.0,
+      "score_max_abs": 0.0,
+      "desc_cos_median": 1.0,
+      "desc_cos_min": 0.9999998211860657,
+      "desc_max_abs": 1.1920928955078125e-07
+    },
+    {
+      "batch": 2,
+      "kp_max_abs": 0.0,
+      "score_max_abs": 0.0,
+      "desc_cos_median": 1.0,
+      "desc_cos_min": 0.9999998807907104,
+      "desc_max_abs": 1.1920928955078125e-07
+    }
+  ],
+  "desc_sample_dense": "GatherSampleBilinear",
+  "desc_sample_new": "GatheredDescriptorHead",
+  "params_dense": 329168,
+  "params_new": 329168,
+  "pass": true
+}

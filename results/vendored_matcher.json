@@ -1,0 +1,66 @@
+{
+  "status": "verified",
+  "checkpoint": "<checkpoint:alike_native_gl_s1_9L.tar>",
+  "n_tensors": 254,
+  "arch_identical": true,
+  "arch_problems": {},
+  "forward_exact": true,
+  "forward_tensors": [
+    {
+      "name": "log_assignment",
+      "dtype": "torch.float32",
+      "max_abs_diff": 0.0,
+      "exact": true
+    },
+    {
+      "name": "matches0",
+      "dtype": "torch.int64",
+      "max_abs_diff": 0.0,
+      "exact": true
+    },
+    {
+      "name": "matches1",
+      "dtype": "torch.int64",
+      "max_abs_diff": 0.0,
+      "exact": true
+    },
+    {
+      "name": "matching_scores0",
+      "dtype": "torch.float32",
+      "max_abs_diff": 0.0,
+      "exact": true
+    },
+    {
+      "name": "matching_scores1",
+      "dtype": "torch.float32",
+      "max_abs_diff": 0.0,
+      "exact": true
+    },
+    {
+      "name": "prune0",
+      "dtype": "torch.float32",
+      "max_abs_diff": 0.0,
+      "exact": true
+    },
+    {
+      "name": "prune1",
+      "dtype": "torch.float32",
+      "max_abs_diff": 0.0,
+      "exact": true
+    },
+    {
+      "name": "ref_descriptors0",
+      "dtype": "torch.float32",
+      "max_abs_diff": 0.0,
+      "exact": true
+    },
+    {
+      "name": "ref_descriptors1",
+      "dtype": "torch.float32",
+      "max_abs_diff": 0.0,
+      "exact": true
+    }
+  ],
+  "weights_branch_redundant": true,
+  "weights_branch_max_abs_diff": 0.0
+}

@@ -1,0 +1,22 @@
+{
+  "tolerance": 0.02,
+  "sensitivity": {
+    "net.conv1": 1.0125693082809448,
+    "net.block1.conv1": 0.9858019351959229,
+    "net.block1.conv2": 0.9974178671836853,
+    "net.conv2": 0.6727651357650757,
+    "net.block2.conv1": 0.8644440174102783,
+    "net.block2.conv2": 0.5155366063117981,
+    "net.block2.downsample": 1.4947930574417114,
+    "net.conv3": 0.7078545093536377,
+    "net.block3.conv1": 0.2901543080806732,
+    "net.block3.conv2": 0.5226832628250122,
+    "net.block3.downsample": 1.0522853136062622,
+    "net.conv4": 1.347387433052063,
+    "net.block4.conv1": 0.1961641162633896,
+    "net.block4.conv2": 0.17667566239833832,
+    "net.block4.downsample": 1.0500925779342651,
+    "net.convhead2": 6.723662376403809
+  },
+  "n_punnable_at_tol": 0
+}

@@ -1,0 +1,24 @@
+{
+  "onnx": "models_final/optimized/alike_stage_gath.onnx",
+  "rknn": "models_final/optimized/alike_stage_gath_fp.rknn",
+  "stage": "alike",
+  "target": "rk3588",
+  "dtype": "fp",
+  "cpu_fallback_lines": [
+    "E RKNN: [10:45:17.506] Unkown op target: 0",
+    "E RKNN: [10:45:17.508] Unkown op target: 0",
+    "E RKNN: [10:45:17.530] Unkown op target: 0",
+    "E RKNN: [10:45:17.553] Unkown op target: 0",
+    "E RKNN: [10:45:17.555] Unkown op target: 0",
+    "E RKNN: [10:45:17.587] Unkown op target: 0",
+    "E RKNN: [10:45:17.598] Unkown op target: 0",
+    "E RKNN: [10:45:17.630] Unkown op target: 0",
+    "E RKNN: [10:45:17.631] Unkown op target: 0",
+    "E RKNN: [10:45:17.636] Unkown op target: 0",
+    "E RKNN: [10:45:17.640] Unkown op target: 0"
+  ],
+  "cpu_fallback_ops": {},
+  "cpu_fallback_nodes": 0,
+  "cpu_fallback_ambiguous": 39,
+  "numeric": {}
+}

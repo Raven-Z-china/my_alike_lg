@@ -1,0 +1,48 @@
+{
+  "onnx": "models_final/original/alike_stage_bil.onnx",
+  "rknn": "models_final/original/alike_stage_bil_fp.rknn",
+  "stage": "alike",
+  "target": "rk3588",
+  "dtype": "fp",
+  "cpu_fallback_lines": [
+    "E RKNN: [10:14:49.000] Unkown op target: 0",
+    "E RKNN: [10:14:49.884] Unkown op target: 0",
+    "E RKNN: [10:14:49.885] Unkown op target: 0",
+    "E RKNN: [10:14:49.886] Unkown op target: 0",
+    "E RKNN: [10:14:49.944] Unkown op target: 0",
+    "E RKNN: [10:14:50.002] Unkown op target: 0",
+    "E RKNN: [10:14:50.035] Unkown op target: 0",
+    "E RKNN: [10:14:50.047] Unkown op target: 0",
+    "E RKNN: [10:14:50.086] Unkown op target: 0",
+    "E RKNN: [10:14:50.087] Unkown op target: 0",
+    "E RKNN: [10:14:50.088] Unkown op target: 0",
+    "E RKNN: [10:14:50.089] Unkown op target: 0"
+  ],
+  "cpu_fallback_ops": {},
+  "cpu_fallback_nodes": 0,
+  "cpu_fallback_ambiguous": 39,
+  "numeric": {
+    "keypoints": {
+      "view0": {
+        "max_nn_px": 3.6052931301944193,
+        "mean_nn_px": 0.04761074920824133,
+        "n_over_1px": 1
+      },
+      "view1": {
+        "max_nn_px": 14.39145379008559,
+        "mean_nn_px": 0.0893759311403397,
+        "n_over_1px": 2
+      }
+    },
+    "descriptors": {
+      "median_cos": 0.9994553657213887,
+      "p1_cos": 0.9771386237024302,
+      "min_cos": 0.7652845005729995,
+      "note": "order-matched by keypoint nearest neighbour"
+    },
+    "scores": {
+      "max_abs": 0.39362311363220215,
+      "mean_abs": 0.05217284361333441
+    }
+  }
+}

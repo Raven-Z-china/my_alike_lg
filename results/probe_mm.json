@@ -1,0 +1,14 @@
+{
+  "onnx": "models/lightglue_stage_mm.onnx",
+  "stage": "lightglue",
+  "log_bytes": 1149137,
+  "fallback_nodes": 0,
+  "fallback_ops": {},
+  "n_no_lowering": 0,
+  "n_will_fallback": 0,
+  "unassigned_target_lines": 7,
+  "raw_no_lowering": 0,
+  "raw_will_fallback": 0,
+  "parser_consistent": true,
+  "fallback_messages": []
+}
